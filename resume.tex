@@ -1,0 +1,272 @@
+%resume.tex
+% vim:set ft=tex spell:
+
+\documentclass[10pt]{article}
+\usepackage{palatino}
+%\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{url}
+\usepackage{textcomp}
+\usepackage{mdwlist}
+\usepackage[usenames]{color}
+\usepackage[letterpaper, portrait, margin=1in, top=0.5in, bottom=0.5in]{geometry}
+%\topmargin=-1.0in
+%\bottom=1.0in
+\raggedright
+
+\pagestyle{empty}
+
+% indentsection style, used for sections that aren't already in lists
+% that need indentation to the level of all text in the document
+\newenvironment{indentsection}[1]%
+{\begin{list}{}%
+	{\setlength{\leftmargin}{#1}}%
+	\item[]%
+}
+{\end{list}}
+
+% opposite of above; bump a section back toward the left margin
+\newenvironment{unindentsection}[1]%
+{\begin{list}{}%
+	{\setlength{\leftmargin}{-0.5#1}}%
+	\item[]%
+}
+{\end{list}}
+
+\newenvironment{changemargin}[2]{%
+  \begin{list}{}{%
+    \setlength{\topsep}{0pt}%
+    \setlength{\leftmargin}{#1}%
+    \setlength{\rightmargin}{#2}%
+    \setlength{\listparindent}{\parindent}%
+    \setlength{\itemindent}{\parindent}%
+    \setlength{\parsep}{\parskip}%
+  }%
+  \item[]}{\end{list}
+}
+
+\newcommand{\lineover}{
+	\begin{changemargin}{-0.05in}{-0.05in}
+		\vspace*{-8pt}
+		\hrulefill \\
+		\vspace*{-2pt}
+	\end{changemargin}
+}
+
+\newenvironment{body} {
+	\begin{changemargin}{-0.25in}{-0.5in}
+  }
+	{\end{changemargin}
+}
+
+\newenvironment{fullbody} {
+	\begin{changemargin}{-0.5in}{-0.5in}
+  }
+	{\end{changemargin}
+}
+
+% format two pieces of text, one left aligned and one right aligned
+\newcommand{\headerrule}[1]{
+    \vspace*{5pt}
+    \begin{changemargin}{-0.5in}{-0.5in}
+        \scshape{#1}\\
+    \lineover
+    \end{changemargin}
+}
+
+% format two pieces of text, one left aligned and one right aligned
+\newcommand{\headerrow}[2]
+{\begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}r}
+	#1 &
+	#2 \\
+\end{tabular*}}
+
+% make "C++" look pretty when used in text by touching up the plus signs
+\newcommand{\CPP}
+{C\nolinebreak[4]\hspace{-.05em}\raisebox{.22ex}{\footnotesize\bf ++ }}
+
+\begin{document}
+\thispagestyle{empty}
+\begin{center}
+{\LARGE \scshape{Brian H. Hulette}}
+\end{center}
+
+\vspace{+1.0em}
+% TODO: Get this on to one line
+\begin{fullbody}
+\headerrow
+{4000 City Walk Way Apt. 337}
+{919.943.5524}
+
+\headerrow
+{Charlottesville, VA 22902}
+{hulettbh@gmail.com}
+
+\headerrow
+{} %]{\textbf{Security Clearance:} Active TS/SCI with CI Polygraph}
+{\url{http://theneuralbit.com}}
+\end{fullbody}
+
+\headerrule{Education}
+\begin{body}
+    \headerrow
+        {\textbf{M.Eng Electrical Engineering (DSP/Communications) - Virginia Tech}}
+        {\textbf{May 2015}}
+    \\
+    \headerrow
+        {\emph{Falls Church, VA - National Capital Region Campus}}
+        {\emph{4.0 GPA}}
+    \vspace{-1.7em}
+    % TODO: Figure out how to make this indented correctly
+
+    \begin{description*}
+        \item[Coursework:]
+        Advanced Digital Communications, Detection and Estimation Theory, \\
+        Introduction to Algorithms, Introduction to Network Security, Radar System Design, \\
+        Network Architectures and Protocols
+        \item[Project:]
+            \emph{Simulation of Various Channelizer Structures
+                  Directed by a Cyclostationary Detector}
+    \end{description*}
+
+    \vspace{+0.5em}
+
+    \headerrow
+        {\textbf{B.S. Computer Engineering - Rose-Hulman Institute of Technology}}
+        {\textbf{May 2011}}
+    \\
+    \headerrow
+        {\emph{Terre Haute, IN}}
+        {\emph{Summa cum laude}}
+    \vspace{-1.7em}
+    % TODO: Figure out how to make this indented correctly
+    \begin{description*}
+        \item[Coursework:]
+        Digital Signal Processing, DSP System Design, Communication Systems, \\
+        Electronic Music Synthesis
+    \end{description*}
+\end{body}
+
+\headerrule{Experience}
+\begin{body}
+    \vspace{+0.5em}
+    \headerrow
+        {\textbf{Commonwealth Computer Research, inc. (CCRi)}}
+        {\textbf{April 2016 - Present}}
+    \headerrow
+        {\emph{Data Scientiest}}
+        {\emph{Charlottesville, VA}}
+    \begin{itemize*}
+        \item Designed and implemented a novel caching approach to accelerate
+              rendering millions of geo-spatial observations in a web browser
+              interface
+        \item Developed a new interactive time control for the same interface
+        \item Currently using the emscripten compiler to port a C++/Qt
+              Application to Javascript
+
+    \end{itemize*}
+
+    \vspace{+0.5em}
+    \headerrow
+        {\textbf{n\texttildelow{}ask, inc. Signal Processing Systems}}
+        {\textbf{July 2011 - March 2016}}
+    \headerrow
+        {\emph{Associate}}
+        {\emph{Fairfax, VA}}
+    \begin{itemize*}
+        % TODO: Limit margins of this list so it stop just under "July"
+        %\item Created innumerable python and \CPP tools for extracting and
+        %      analyzing signal data.
+        %\item Worked on tools for porting Software-Defined Radio (SDR)
+        %      components into various frameworks.
+        \item Developed and deployed a system for automatic signal
+              detection and classification.
+        %      Detection information is stored
+        %      in a SQL database which can be viewed by analysts using a custom
+        %      Qt interface or a webpage.
+        \item Contributed to an innovative set of Qt tools for viewing multiple
+              sets of spectral data and identify common features between them
+        \item Developed a WebSocket interface for the next major
+              version of X-Midas (M50), an SDR framework used by the Intelligence
+              Community, to bring signal analysis to the web.
+        \item Efficiently implemented various DSP algorithms, including
+              a Maximum Likelihood Sequence Estimator (MLSE) demod and a wideband
+              detector for identifying signals with repeated sync patterns.
+        \item Implemented two techniques for identifying corresponding
+              uplink/downlink frequencies for a particular signal. One using
+              efficient DSP algorithms and the other using analytic tools
+              leveraging MongoDB.
+    \end{itemize*}
+
+    %\vspace{+0.5em}
+    %\headerrow
+    %    {\textbf{Rose-Hulman Senior Project - Wireless Video Viewing Device}}
+    %    {\textbf{Aug 2010 - May 2011}}
+    %\headerrow
+    %    {\emph{Student}}
+    %    {\emph{Terre Haute, IN}}
+    %\begin{itemize*}
+    %    \item Created an embedded transmitter receiver pair to transfer low
+    %          bit-rate video
+    %    \item Configured two TI DaVinci video processors to encode/decode an
+    %          H.264 video stream and transfer it via our client's low bit-rate
+    %          radios
+    %    \item Made Kernel modifications and wrote \CPP applications for data
+    %          capture, transfer, and display
+    %\end{itemize*}
+
+    \vspace{+0.5em}
+    \headerrow
+        {\textbf{Duke University Center for In Vivo Microscopy}}
+        {\textbf{Summer 2010}}
+    \headerrow
+        {\emph{Undergraduate Research Assistant}}
+        {\emph{Durham, NC}}
+    \begin{itemize*}
+        \item Implemented a 3D spherical Hough Transform in MATLAB to identify
+              and measure glomeruli in extremely high resolution (15
+              $\mu$m voxels) MRI images of a kidney
+        \item Created visualizations of 3D brain, kidney and heart MRI data
+    \end{itemize*}
+    %\vspace{+0.5em}
+    %\headerrow
+    %    {\textbf{Rose-Hulman Ventures - Vision Project}}
+    %    {\textbf{Nov 2009 - May 2010}}
+    %\headerrow
+    %    {\emph{Intern}}
+    %    {\emph{Terre Haute, IN}}
+    %\begin{itemize*}
+    %    \item Created a system to automatically calibrate a stereo vision system
+    %          with a robotic arm's coordinate frame
+    %    \item Developed software to control a Motoman HP-6 robotic arm as well
+    %          as MATLAB calibration algorithms
+    %\end{itemize*}
+\end{body}
+\headerrule{Technical Skills}
+\begin{body}
+\begin{description*}
+	\item[Areas of Interest:]
+	Digital Signal Processing, Machine Learning, Algorithm Development
+	\item[Languages:]
+	Python, C/\CPP, Javascript, MATLAB, \LaTeX
+	\item[Other:]
+    git, Mercurial, Linux, X-Midas, Windows
+\end{description*}
+\end{body}
+
+\headerrule{Publications}
+\begin{body}
+B. Hulette and A. Zaghloul. ``Simulation of Various Channelizer Structures
+Directed by Cyclostationary Detector," presented at the 1\textsuperscript{st}
+URSI Atlantic Radio Science Conference, Gran Canaria, Canary Islands, 2015.
+
+\vspace{0.25cm}
+
+L. Xie, R. Cianciol, B. Hulette, H. Won Lee, Y. Qi, G. Cofer, G.A. Johnson.
+"Magnetic resonance histology of age-related nephropathy in the Sprague
+Dawley rat." \emph{Toxicologic Pathology}, vol. 40 no. 5, pp. 764-778, July 2012.
+\end{body}
+
+
+\end{document}
